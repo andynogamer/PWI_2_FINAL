@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Isekai Diaries - Latest News</title>
+    <style>
+        /* Global Styles */
+        :root {
+            --primary-color: #6B3FA0;
+            --secondary-color: #FF5678;
+            --dark-color: #2D2D2D;
+            --light-color: #F5F5F5;
+            --accent-color: #30BFBF;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--light-color);
+            color: var(--dark-color);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 15px 0;
+        }
+        
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: white;
+            text-decoration: none;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 20px;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+        
+        .nav-links a.active {
+            background-color: rgba(255, 255, 255, 0.2);
+            font-weight: bold;
+        }
+        
+        .auth-buttons {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .btn {
+            padding: 8px 16px;
+            border-radius: 5px;
+            border: none;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        
+        .btn-primary {
+            background-color: var(--secondary-color);
+            color: white;
+        }
+        
+        .btn-outline {
+            background-color: transparent;
+            color: white;
+            border: 1px solid white;
+        }
+        
+        .btn:hover {
+            opacity: 0.9;
+            transform: translateY(-2px);
+        }
+        
+        /* Page Header */
+        .page-header {
+            background: linear-gradient(rgba(107, 63, 160, 0.8), rgba(107, 63, 160, 0.9)), url('/api/placeholder/1200/300') center/cover;
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .page-header h1 {
+            font-size: 36px;
+            margin-bottom: 15px;
+        }
+        
+        /* News Grid */
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+        
+        .news-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+        
+        .news-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .news-image {
+            height: 200px;
+            width: 100%;
+            object-fit: cover;
+        }
+        
+        .news-content {
+            padding: 20px;
+        }
+        
+        .news-tag {
+            background-color: var(--accent-color);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 3px;
+            font-size: 12px;
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+        
+        .news-title {
+            font-size: 20px;
+            margin-bottom: 10px;
+            color: var(--dark-color);
+        }
+        
+        .news-title a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.3s;
+        }
+        
+        .news-title a:hover {
+            color: var(--primary-color);
+        }
+        
+        .news-excerpt {
+            color: #666;
+            margin-bottom: 15px;
+            line-height: 1.5;
+        }
+        
+        .news-meta {
+            display: flex;
+            justify-content: space-between;
+            color: #888;
+            font-size: 14px;
+        }
+        
+        /* Pagination */
+        .pagination {
+            display: flex;
+            justify-content: center;
+            margin: 40px 0;
+        }
+        
+        .pagination a {
+            display: inline-block;
+            padding: 8px 15px;
+            margin: 0 5px;
+            background-color: white;
+            color: var(--primary-color);
+            border-radius: 5px;
+            text-decoration: none;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s;
+        }
+        
+        .pagination a:hover {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        .pagination a.active {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 40px 0;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 40px;
+        }
+        
+        .footer-section h3 {
+            font-size: 20px;
+            margin-bottom: 20px;
+            color: var(--secondary-color);
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            color: #ddd;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: var(--secondary-color);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: background-color 0.3s;
+        }
+        
+        .social-icon:hover {
+            background-color: var(--secondary-color);
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        /* Login/Register Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+        
+        .modal.active {
+            display: flex;
+        }
+        
+        .modal-content {
+            background-color: white;
+            border-radius: 10px;
+            padding: 30px;
+            width: 100%;
+            max-width: 400px;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
+        }
+        
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .modal-title {
+            font-size: 24px;
+            color: var(--primary-color);
+        }
+        
+        .close-btn {
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: #888;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+        
+        .form-input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        
+        .form-input:focus {
+            outline: none;
+            border-color: var(--primary-color);
+        }
+        
+        .form-submit {
+            width: 100%;
+            padding: 12px;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .form-submit:hover {
+            background-color: #5a3586;
+        }
+        
+        .form-switch {
+            text-align: center;
+            margin-top: 20px;
+            color: #666;
+        }
+        
+        .form-switch a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 600;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .footer-content {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .news-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container navbar">
+            <a href="isekai-diaries-frontend.html" class="logo">ISEKAI DIARIES</a>
+            <nav class="nav-links">
+                <a href="isekai-diaries-frontend.html">Home</a>
+                <a href="isekai-diaries-latest-news.html" class="active">Latest News</a>
+                
+            </nav>
+            <div class="auth-buttons">
+                <button class="btn btn-outline" id="loginBtn">Login</button>
+                <button class="btn btn-primary" id="registerBtn">Register</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1>Latest Anime News</h1>
+            <p>Stay updated with the freshest news from the world of anime and isekai</p>
+        </div>
+    </section>
+
+    <!-- News Grid -->
+    <main class="container">
+        <div class="news-grid">
+            <!-- News Article 1 -->
+            <div class="news-card">
+                <img src="kudasai_rezero.webp" alt="News Image" class="news-image">
+                <div class="news-content">
+                    <span class="news-tag">New Release</span>
+                    <h3 class="news-title"><a href="isekai-diaries-article.html">The New Season of 'Re:Zero' Breaks All Records</a></h3>
+                    <p class="news-excerpt">The long-awaited season has surpassed all expectations with its intense storyline and character development.</p>
+                    <div class="news-meta">
+                        <span>By Admin</span>
+                        <span>May 1, 2025</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- News Article 2 -->
+            <div class="news-card">
+                <img src="ghibli.webp" alt="News Image" class="news-image">
+                <div class="news-content">
+                    <span class="news-tag">Industry</span>
+                    <h3 class="news-title"><a href="isekai-diaries-ghibli.html">Studio Ghibli Announces New Isekai Project</a></h3>
+                    <p class="news-excerpt">The legendary animation studio is stepping into the isekai genre with an original film scheduled for 2026.</p>
+                    <div class="news-meta">
+                        <span>By Fatima</span>
+                        <span>April 29, 2025</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- News Article 3 -->
+            <div class="news-card">
+                <img src="isekaiimage.jpeg" alt="News Image" class="news-image">
+                <div class="news-content">
+                    <span class="news-tag">Review</span>
+                    <h3 class="news-title"><a href="isekai-diaries-top10.html">Top 10 Isekai Anime You Must Watch in 2025</a></h3>
+                    <p class="news-excerpt">From classics to newcomers, we rank the best isekai anime that every fan should add to their watchlist.</p>
+                    <div class="news-meta">
+                        <span>By Fatima</span>
+                        <span>April 28, 2025</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- News Article 4 -->
+            <div class="news-card">
+                <img src="Episode_56_Subaru.webp" alt="News Image" class="news-image">
+                <div class="news-content">
+                    <span class="news-tag">Character Spotlight</span>
+                    <h3 class="news-title"><a href="isekai-diaries-subaru.html">Analyzing the Development of Subaru Natsuki</a></h3>
+                    <p class="news-excerpt">A deep dive into the psychological journey of one of isekai's most complex protagonists.</p>
+                    <div class="news-meta">
+                        <span>By Angel</span>
+                        <span>April 25, 2025</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- News Article 5 -->
+            <div class="news-card">
+                <img src="rezero-00-emilia-subaru-ram.avif" alt="News Image" class="news-image">
+                <div class="news-content">
+                    <span class="news-tag">Interview</span>
+                    <h3 class="news-title"><a href="isekai-diaries-rezero-future.html">Exclusive: Director Talks About Re:Zero's Future</a></h3>
+                    <p class="news-excerpt">We sat down with the director to discuss what's next for the franchise after the current season concludes.</p>
+                    <div class="news-meta">
+                        <span>By Admin</span>
+                        <span>April 20, 2025</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- News Article 6 -->
+            <div class="news-card">
+                <img src="Past-future-conventions-20180627_CA_1052-crop.jpg" alt="News Image" class="news-image">
+                <div class="news-content">
+                    <span class="news-tag">Event</span>
+                    <h3 class="news-title"><a href="isekai-diaries-convention.html">Isekai Convention Announced for Summer 2025</a></h3>
+                    <p class="news-excerpt">The first dedicated isekai anime convention will take place in Tokyo this July. Here's everything you need to know.</p>
+                    <div class="news-meta">
+                        <span>By Angel</span>
+                        <span>April 15, 2025</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Pagination -->
+        
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>About Isekai Diaries</h3>
+                    <p>Your reliable source for the latest news, reviews, and content about anime and the captivating world of isekai.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-icon">F</a>
+                        <a href="#" class="social-icon">T</a>
+                        <a href="#" class="social-icon">I</a>
+                        <a href="#" class="social-icon">Y</a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="isekai-diaries-frontend.html">Home</a></li>
+                        <li><a href="isekai-diaries-latest-news.html">Latest News</a></li>
+                        <li><a href="#">Reviews</a></li>
+                        <li><a href="#">Characters</a></li>
+                        <li><a href="#">About</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact Us</h3>
+                    <ul class="footer-links">
+                        <li>Email: info@isekaiDiaries.com</li>
+                        <li>Phone: +123 456 7890</li>
+                        <li>Address: Anime Street 123, Tokyo, Japan</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Isekai Diaries. All rights reserved. Created by Fatima Geraldine Falcon Rostro & Angel Antonio Mata Zamora</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Login Modal -->
+    <div class="modal" id="loginModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Login</h3>
+                <button class="close-btn">&times;</button>
+            </div>
+            <form>
+                <div class="form-group">
+                    <label for="loginEmail" class="form-label">Email</label>
+                    <input type="email" id="loginEmail" class="form-input" required>
+                </div>
+                <div class="form-group">
+                    <label for="loginPassword" class="form-label">Password</label>
+                    <input type="password" id="loginPassword" class="form-input" required>
+                </div>
+                <button type="submit" class="form-submit">Login</button>
+                <div class="form-switch">
+                    Don't have an account? <a href="#" id="switchToRegister">Register now</a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Register Modal -->
+    <div class="modal" id="registerModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Register</h3>
+                <button class="close-btn">&times;</button>
+            </div>
+            <form>
+                <div class="form-group">
+                    <label for="registerName" class="form-label">Full Name</label>
+                    <input type="text" id="registerName" class="form-input" required>
+                </div>
+                <div class="form-group">
+                    <label for="registerEmail" class="form-label">Email</label>
+                    <input type="email" id="registerEmail" class="form-input" required>
+                </div>
+                <div class="form-group">
+                    <label for="registerPassword" class="form-label">Password</label>
+                    <input type="password" id="registerPassword" class="form-input" required>
+                </div>
+                <div class="form-group">
+                    <label for="confirmPassword" class="form-label">Confirm Password</label>
+                    <input type="password" id="confirmPassword" class="form-input" required>
+                </div>
+                <button type="submit" class="form-submit">Register</button>
+                <div class="form-switch">
+                    Already have an account? <a href="#" id="switchToLogin">Login now</a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Modal functionality
+        const loginBtn = document.getElementById('loginBtn');
+        const registerBtn = document.getElementById('registerBtn');
+        const loginModal = document.getElementById('loginModal');
+        const registerModal = document.getElementById('registerModal');
+        const closeBtns = document.querySelectorAll('.close-btn');
+        const switchToRegister = document.getElementById('switchToRegister');
+        const switchToLogin = document.getElementById('switchToLogin');
+
+        loginBtn.addEventListener('click', () => {
+            loginModal.classList.add('active');
+        });
+
+        registerBtn.addEventListener('click', () => {
+            registerModal.classList.add('active');
+        });
+
+        closeBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                loginModal.classList.remove('active');
+                registerModal.classList.remove('active');
+            });
+        });
+
+        switchToRegister.addEventListener('click', (e) => {
+            e.preventDefault();
+            loginModal.classList.remove('active');
+            registerModal.classList.add('active');
+        });
+
+        switchToLogin.addEventListener('click', (e) => {
+            e.preventDefault();
+            registerModal.classList.remove('active');
+            loginModal.classList.add('active');
+        });
+
+        // Close modal when clicking outside
+        window.addEventListener('click', (e) => {
+            if (e.target === loginModal) {
+                loginModal.classList.remove('active');
+            }
+            if (e.target === registerModal) {
+                registerModal.classList.remove('active');
+            }
+        });
+    </script>
+</body>
+</html>

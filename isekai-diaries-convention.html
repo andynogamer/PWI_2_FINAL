@@ -1,0 +1,1223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Isekai Convention Announced for Summer 2025 - Isekai Diaries</title>
+    <style>
+        /* Global Styles */
+        :root {
+            --primary-color: #6B3FA0;
+            --secondary-color: #FF5678;
+            --dark-color: #2D2D2D;
+            --light-color: #F5F5F5;
+            --accent-color: #30BFBF;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--light-color);
+            color: var(--dark-color);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100; 
+        }
+        
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: white;
+            text-decoration: none;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 20px;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        
+        .nav-links a:hover, .nav-links a.active {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+        
+        .auth-buttons {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .btn {
+            padding: 8px 16px;
+            border-radius: 5px;
+            border: none;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        
+        .btn-primary {
+            background-color: var(--secondary-color);
+            color: white;
+        }
+        
+        .btn-outline {
+            background-color: transparent;
+            color: white;
+            border: 1px solid white;
+        }
+        
+        .btn:hover {
+            opacity: 0.9;
+            transform: translateY(-2px);
+        }
+
+        .welcome-message {
+            color: white;
+            font-weight: 500;
+            margin-right: 10px;
+        }
+
+        /* Article Page */
+        .article-page {
+            padding: 40px 0; 
+        }
+        
+        .article-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .article-category {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 14px;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+        }
+        
+        .article-title-main { 
+            font-size: 38px;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            line-height: 1.2;
+        }
+        
+        .article-meta {
+            color: #777;
+            margin-bottom: 30px;
+            display: flex;
+            flex-wrap: wrap; 
+            justify-content: center;
+            gap: 15px 25px; 
+        }
+        
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+        }
+        
+        .article-featured-image {
+            width: 100%;
+            max-height: 500px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 40px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+        }
+        
+        .article-body {
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.8;
+            font-size: 17px; 
+        }
+        
+        .article-body p {
+            margin-bottom: 20px;
+        }
+        
+        .article-body h2 {
+            font-size: 28px;
+            color: var(--primary-color);
+            margin: 40px 0 20px;
+            border-bottom: 2px solid var(--accent-color);
+            padding-bottom: 10px;
+        }
+        
+        .article-body h3 {
+            font-size: 24px;
+            color: var(--dark-color);
+            margin: 30px 0 15px;
+        }
+        
+        .article-body ul, .article-body ol {
+            margin: 20px 0;
+            padding-left: 30px; 
+        }
+        
+        .article-body li {
+            margin-bottom: 10px;
+        }
+        
+        .article-image-inline { 
+            width: 100%;
+            border-radius: 10px;
+            margin: 30px 0;
+            box-shadow: 0 5px 10px rgba(0,0,0,0.07);
+        }
+        
+        .article-quote {
+            border-left: 5px solid var(--secondary-color);
+            padding: 20px 25px;
+            background-color: #f9f5ff; 
+            margin: 30px 0;
+            font-style: italic;
+            font-size: 18px;
+            color: #555;
+        }
+        .article-quote footer { 
+            display: block;
+            text-align: right;
+            margin-top: 10px;
+            font-size: 15px;
+            font-style: normal;
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+        
+        .tag-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 40px 0;
+        }
+        
+        .tag {
+            background-color: #e9e3f3; 
+            color: var(--primary-color);
+            padding: 6px 12px;
+            border-radius: 15px;
+            font-size: 13px;
+            font-weight: 500;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        .tag:hover {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        .author-section {
+            display: flex;
+            flex-direction: column; 
+            align-items: center; 
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            margin: 50px 0;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            text-align: center; 
+        }
+        
+        .author-avatar {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 15px; 
+        }
+        
+        .author-info h3 {
+            font-size: 20px;
+            margin-bottom: 10px;
+            color: var(--primary-color);
+        }
+        
+        .author-bio {
+            color: #666;
+            line-height: 1.6;
+            font-size: 15px;
+        }
+        
+        .comments-section {
+            margin-top: 50px;
+        }
+        
+        .comments-title {
+            font-size: 26px;
+            margin-bottom: 30px;
+            color: var(--primary-color);
+            text-align: center;
+        }
+        
+        .comment {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+            border-left: 4px solid var(--accent-color);
+        }
+        
+        .comment-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+            flex-wrap: wrap;
+        }
+        
+        .comment-user {
+            font-weight: 600;
+            color: var(--primary-color);
+            font-size: 16px;
+        }
+        
+        .comment-date {
+            color: #888;
+            font-size: 13px;
+        }
+        
+        .comment-content {
+            color: #444;
+            line-height: 1.7;
+        }
+        
+        .comment-form {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            margin-top: 40px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .comment-form h3 {
+            font-size: 22px;
+            margin-bottom: 25px;
+            color: var(--primary-color);
+            text-align: center;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: #555;
+        }
+        
+        .form-input, .form-textarea { 
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+        
+        .form-textarea {
+            height: 120px;
+            resize: vertical;
+        }
+        
+        .form-input:focus, .form-textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(107, 63, 160, 0.15);
+        }
+        
+        .submit-btn {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 5px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s;
+            display: block;
+            width: 100%;
+            font-size: 16px;
+        }
+        
+        .submit-btn:hover {
+            background-color: #5a3586;
+            transform: translateY(-1px);
+        }
+        
+        /* Related Articles */
+        .related-articles {
+            margin-top: 70px;
+            padding-top: 40px;
+            border-top: 1px solid #eee;
+        }
+        
+        .related-title {
+            font-size: 28px;
+            margin-bottom: 40px;
+            color: var(--primary-color);
+            text-align: center;
+        }
+        
+        .related-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+            gap: 30px;
+        }
+        
+        .related-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s, box-shadow 0.3s;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .related-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+        }
+        
+        .related-image {
+            height: 180px;
+            width: 100%;
+            object-fit: cover;
+        }
+        
+        .related-content {
+            padding: 20px;
+            flex-grow: 1; 
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .related-category {
+            background-color: var(--accent-color);
+            color: white;
+            padding: 4px 10px;
+            border-radius: 15px;
+            font-size: 12px;
+            display: inline-block;
+            margin-bottom: 10px;
+            align-self: flex-start; 
+        }
+        
+        .related-card-title {
+            font-size: 18px;
+            margin-bottom: 10px;
+            color: var(--dark-color);
+            line-height: 1.4;
+            flex-grow: 1; 
+        }
+         .related-card-title a {
+            text-decoration: none;
+            color: inherit;
+        }
+        .related-card-title a:hover {
+            color: var(--primary-color);
+        }
+        
+        .related-date {
+            color: #888;
+            font-size: 12px;
+            margin-top: auto; 
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark-color);
+            color: #ccc; 
+            padding: 50px 0 30px;
+            margin-top: 60px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-section h3 {
+            font-size: 20px;
+            margin-bottom: 20px;
+            color: var(--secondary-color);
+        }
+        
+        .footer-section p {
+            font-size: 15px;
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+        
+        .footer-links a {
+            color: #bbb;
+            text-decoration: none;
+            transition: color 0.3s, padding-left 0.3s;
+            font-size: 15px;
+        }
+        
+        .footer-links a:hover {
+            color: var(--secondary-color);
+            padding-left: 5px;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 10px; 
+        }
+        
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+        
+        .social-icon:hover {
+            background-color: var(--secondary-color);
+            transform: scale(1.1);
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 14px;
+            color: #aaa;
+        }
+        
+        /* Login/Register Modal */
+        .modal {
+            display: none; 
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6); 
+            justify-content: center;
+            align-items: center;
+            z-index: 1000; 
+        }
+        
+        .modal.active {
+            display: flex; 
+        }
+        
+        .modal-content {
+            background-color: white;
+            border-radius: 10px;
+            padding: 30px 35px;
+            width: 100%;
+            max-width: 420px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+            position: relative; 
+            animation: modalFadeIn 0.3s ease-out;
+        }
+
+        @keyframes modalFadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .modal-title {
+            font-size: 24px;
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+        
+        .close-btn {
+            background: none;
+            border: none;
+            font-size: 28px;
+            cursor: pointer;
+            color: #aaa;
+            transition: color 0.3s;
+        }
+        .close-btn:hover {
+            color: var(--dark-color);
+        }
+        
+        .form-submit {
+            width: 100%;
+            padding: 12px;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+        
+        .form-submit:hover {
+            background-color: #5a3586;
+            transform: translateY(-1px);
+        }
+        
+        .form-switch {
+            text-align: center;
+            margin-top: 25px;
+            color: #666;
+            font-size: 15px;
+        }
+        
+        .form-switch a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 600;
+        }
+        .form-switch a:hover {
+            text-decoration: underline;
+        }
+
+        .message {
+            padding: 12px 15px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            text-align: center;
+            font-weight: 500;
+            font-size: 15px;
+            border-width: 1px;
+            border-style: solid;
+        }
+        .message.success {
+            background-color: #e6f7f0; 
+            color: #006400; 
+            border-color: #b3e0c7; 
+        }
+        .message.error {
+            background-color: #fdecea; 
+            color: #a01228; 
+            border-color: #f8c4c9; 
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .articles-grid, .related-grid {
+                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            }
+            .footer-content {
+                grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            }
+            .article-title-main {
+                font-size: 32px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none; 
+            }
+            .navbar {
+                flex-direction: column; 
+                gap: 15px;
+            }
+            .auth-buttons {
+                 margin-top: 0; 
+            }
+            .hero h1 {
+                font-size: 36px;
+            }
+            .hero p {
+                font-size: 16px;
+            }
+            .article-title-main {
+                font-size: 28px;
+            }
+            .article-body {
+                font-size: 16px;
+            }
+            .article-body h2 { font-size: 24px; }
+            .article-body h3 { font-size: 20px; }
+
+            .author-section {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+            .author-avatar {
+                margin-right: 0;
+                margin-bottom: 15px;
+            }
+            .footer-content {
+                text-align: center;
+            }
+            .social-links {
+                justify-content: center;
+            }
+            .modal-content {
+                margin: 0 15px; 
+                padding: 25px;
+            }
+        }
+         @media (min-width: 769px) { 
+            .author-section {
+                flex-direction: row;
+                align-items: flex-start;
+                text-align: left;
+            }
+            .author-avatar {
+                margin-right: 25px;
+                margin-bottom: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container navbar">
+            <a href="isekai-diaries-frontend.html" class="logo">ISEKAI DIARIES</a>
+            <nav class="nav-links">
+                <a href="isekai-diaries-frontend.html">Home</a>
+                <a href="isekai-diaries-latest-news.html" class="active">Latest News</a>
+               
+            </nav>
+            <div class="auth-buttons" id="authButtonsContainer">
+                </div>
+        </div>
+    </header>
+
+    <main class="article-page">
+        <div class="container">
+            <article>
+                <div class="article-header">
+                    <span class="article-category">Event</span>
+                    <h1 class="article-title-main">Isekai Convention Announced for Summer 2025</h1>
+                    <div class="article-meta">
+                        <span class="meta-item">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                                <circle cx="12" cy="7" r="4"></circle>
+                            </svg>
+                            By Angel
+                        </span>
+                        <span class="meta-item">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                                <line x1="16" y1="2" x2="16" y2="6"></line>
+                                <line x1="8" y1="2" x2="8" y2="6"></line>
+                                <line x1="3" y1="10" x2="21" y2="10"></line>
+                            </svg>
+                            April 15, 2025
+                        </span>
+                        <span class="meta-item">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                                <circle cx="12" cy="12" r="3"></circle>
+                            </svg>
+                            4.2K Views
+                        </span>
+                    </div>
+                </div>
+
+                <img src="https://placehold.co/1200x500/3CB371/FFFFFF?text=Isekai+Convention+2025" alt="[Image of Isekai Convention 2025 Announcement Banner]" class="article-featured-image" onerror="this.onerror=null;this.src='https://placehold.co/1200x500/EFEFEF/AAAAAA?text=Image+Not+Available';">
+
+                <div class="article-body">
+                    <p>Get ready to be transported, isekai fans! Organizers today officially announced the inaugural **"Otherworldly Journeys: The Isekai Convention,"** a brand-new event dedicated entirely to the beloved genre of being whisked away to fantastical new worlds. The convention is scheduled to take place in Tokyo during the summer of 2025, promising an unforgettable experience for attendees.</p>
+
+                    <p>This marks the first large-scale convention solely focused on isekai anime, manga, light novels, and games. The event aims to bring together fans, creators, voice actors, and industry professionals to celebrate the diverse and ever-expanding isekai universe.</p>
+
+                    <h2>What to Expect at "Otherworldly Journeys 2025"</h2>
+                    
+                    <p>The organizers have teased a packed schedule featuring a wide array of activities and attractions. While the full guest list and detailed program are yet to be revealed, attendees can look forward to:</p>
+                    
+                    <ul>
+                        <li><strong>Guest Panels & Q&A Sessions:</strong> Opportunities to hear from renowned isekai authors, illustrators, anime directors, and voice actors.</li>
+                        <li><strong>Exclusive Screenings:</strong> Premieres of new isekai anime episodes or even sneak peeks of upcoming projects.</li>
+                        <li><strong>Cosplay Competitions:</strong> A chance for fans to showcase their creativity by dressing up as their favorite isekai characters.</li>
+                        <li><strong>Artist Alley & Exhibitor Hall:</strong> Discover unique fan art, official merchandise, and works from independent creators.</li>
+                        <li><strong>Interactive Workshops:</strong> Learn about world-building, character design, or even try your hand at Japanese voice acting.</li>
+                        <li><strong>Themed Cafes & Photo Ops:</strong> Immerse yourself in settings inspired by popular isekai worlds.</li>
+                    </ul>
+
+                    <img src="https://placehold.co/800x400/2E8B57/FFFFFF?text=Isekai+Con+Activities" alt="[Image of concept art for Isekai Convention activities]" class="article-image-inline" onerror="this.onerror=null;this.src='https://placehold.co/800x400/EFEFEF/AAAAAA?text=Image+Not+Available';">
+
+                    <h2>A Celebration of a Genre</h2>
+                    
+                    <p>The convention director, Haruto Sato, shared his excitement: "The isekai genre has captured the hearts of millions globally. It offers escapism, adventure, and often, profound character journeys. 'Otherworldly Journeys' is our way of creating a dedicated space for this passionate community to come together and celebrate the stories that transport us."</p>
+                    <p>The choice of Tokyo as the host city is fitting, given its status as the heart of anime culture. The event is expected to draw both local fans and international visitors, further solidifying isekai's global appeal.</p>
+
+                    <blockquote class="article-quote">
+                        "We envision 'Otherworldly Journeys' not just as a convention, but as a portal itself – a place where fans can step into the magic of their favorite isekai series for a few unforgettable days."
+                        <footer>Haruto Sato, Convention Director</footer>
+                    </blockquote>
+                    
+                    <p>Ticket sales and further details about "Otherworldly Journeys: The Isekai Convention 2025" are expected to be announced in the coming months. Isekai enthusiasts should keep a close eye on the official convention website and social media channels for updates. This is one summer event you won't want to be reincarnated out of!</p>
+
+                    <div class="tag-list">
+                        <span class="tag">Isekai</span>
+                        <span class="tag">Convention</span>
+                        <span class="tag">Event</span>
+                        <span class="tag">Anime</span>
+                        <span class="tag">Tokyo</span>
+                        <span class="tag">Summer 2025</span>
+                    </div>
+
+                    <div class="author-section">
+                        <img src="https://placehold.co/100x100/ADD8E6/333333?text=A" alt="[Image of Angel's Avatar]" class="author-avatar" onerror="this.onerror=null;this.src='https://placehold.co/100x100/EFEFEF/AAAAAA?text=Avatar';">
+                        <div class="author-info">
+                            <h3>Written by Angel</h3>
+                            <p class="author-bio">Your go-to source for event news and community happenings in the anime world. Angel is always excited to share the latest on conventions and fan gatherings.</p>
+                        </div>
+                    </div>
+
+                    <div class="comments-section">
+                        <h3 class="comments-title">Comments (3)</h3>
+                        
+                        <div class="comment">
+                            <div class="comment-header">
+                                <span class="comment-user">ConGoer2000</span>
+                                <span class="comment-date">April 15, 2025</span>
+                            </div>
+                            <p class="comment-content">An entire convention just for isekai? Sign me up! I'm already planning my cosplay. Hope they get some big VAs!</p>
+                        </div>
+                        
+                        <div class="comment">
+                            <div class="comment-header">
+                                <span class="comment-user">TravelToTokyo</span>
+                                <span class="comment-date">April 15, 2025</span>
+                            </div>
+                            <p class="comment-content">This is the excuse I needed to finally visit Tokyo! Summer 2025 can't come soon enough. I wonder if Tappei Nagatsuki will be there.</p>
+                        </div>
+                        
+                        <div class="comment">
+                            <div class="comment-header">
+                                <span class="comment-user">MangaReaderX</span>
+                                <span class="comment-date">April 16, 2025</span>
+                            </div>
+                            <p class="comment-content">Hope they have a good focus on light novels and manga too, not just the anime. The source material is often where the best stories are!</p>
+                        </div>
+                        
+                        <form class="comment-form" id="commentFormIsekaiCon">
+                            <h3>Leave a Comment</h3>
+                            <div id="commentMessageIsekaiCon" class="message" style="display:none;"></div>
+                            <div class="form-group">
+                                <label for="commenterNameIsekaiCon" class="form-label">Name</label>
+                                <input type="text" id="commenterNameIsekaiCon" class="form-input" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="commenterEmailIsekaiCon" class="form-label">Email (optional)</label>
+                                <input type="email" id="commenterEmailIsekaiCon" class="form-input">
+                            </div>
+                            <div class="form-group">
+                                <label for="commentContentIsekaiCon" class="form-label">Your Comment</label>
+                                <textarea id="commentContentIsekaiCon" class="form-input form-textarea" required></textarea>
+                            </div>
+                            <button type="submit" class="submit-btn">Post Comment</button>
+                        </form>
+                    </div>
+                </div>
+            </article>
+
+            <section class="related-articles">
+                <h2 class="related-title">Related Articles</h2>
+                <div class="related-grid">
+                    <div class="related-card">
+                        <a href="isekai-diaries-article.html">
+                            <img src="kudasai_rezero.webp" alt="[Image of Re:Zero New Season]" class="related-image" onerror="this.onerror=null;this.src='https://placehold.co/400x200/EFEFEF/AAAAAA?text=Image+Not+Available';">
+                        </a>
+                        <div class="related-content">
+                            <span class="related-category">New Release</span>
+                            <h3 class="related-card-title"><a href="isekai-diaries-article.html">The New Season of 'Re:Zero' Breaks All Records</a></h3>
+                            <span class="related-date">May 1, 2025</span>
+                        </div>
+                    </div>
+                    
+                    <div class="related-card">
+                         <a href="isekai-diaries-top10.html">
+                            <img src="isekaiimage.jpeg" alt="[Image of Top 10 Isekai Anime]" class="related-image" onerror="this.onerror=null;this.src='https://placehold.co/400x200/EFEFEF/AAAAAA?text=Image+Not+Available';">
+                        </a>
+                        <div class="related-content">
+                            <span class="related-category">Review</span>
+                            <h3 class="related-card-title"><a href="isekai-diaries-top10.html">Top 10 Isekai Anime You Must Watch in 2025</a></h3>
+                            <span class="related-date">April 28, 2025</span>
+                        </div>
+                    </div>
+                    
+                    <div class="related-card">
+                        <a href="isekai-diaries-rezero-future.html">
+                            <img src="rezero-00-emilia-subaru-ram.avif" alt="[Image of Re:Zero Director Interview]" class="related-image" onerror="this.onerror=null;this.src='https://placehold.co/400x200/EFEFEF/AAAAAA?text=Image+Not+Available';">
+                        </a>
+                        <div class="related-content">
+                            <span class="related-category">Interview</span>
+                            <h3 class="related-card-title"><a href="isekai-diaries-rezero-future.html">Exclusive: Director Talks About Re:Zero's Future</a></h3>
+                            <span class="related-date">April 20, 2025</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>About Isekai Diaries</h3>
+                    <p>Your reliable source for the latest news, reviews, and content about anime and the captivating world of isekai.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-icon" aria-label="Facebook">F</a>
+                        <a href="#" class="social-icon" aria-label="Twitter">T</a>
+                        <a href="#" class="social-icon" aria-label="Instagram">I</a>
+                        <a href="#" class="social-icon" aria-label="YouTube">Y</a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="isekai-diaries-frontend.html">Home</a></li>
+                        <li><a href="isekai-diaries-latest-news.html">Latest News</a></li>
+                        <li><a href="#">Reviews</a></li>
+                        <li><a href="#">Characters</a></li>
+                        <li><a href="#">About</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact Us</h3>
+                    <ul class="footer-links">
+                        <li>Email: info@isekaidiaries.com</li>
+                        <li>Phone: +123 456 7890</li>
+                        <li>Address: Anime Street 123, Akihabara, Tokyo</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Isekai Diaries. All rights reserved. Created by Fatima Geraldine Falcon Rostro & Angel Antonio Mata Zamora.</p>
+            </div>
+        </div>
+    </footer>
+
+    <div class="modal" id="loginModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Login</h3>
+                <button class="close-btn" data-modal-id="loginModal" aria-label="Close login modal">&times;</button>
+            </div>
+            <div id="loginMessage" class="message" style="display:none;"></div>
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="loginEmail" class="form-label">Email</label>
+                    <input type="email" id="loginEmail" class="form-input" required autocomplete="email">
+                </div>
+                <div class="form-group">
+                    <label for="loginPassword" class="form-label">Password</label>
+                    <input type="password" id="loginPassword" class="form-input" required autocomplete="current-password">
+                </div>
+                <button type="submit" class="form-submit">Login</button>
+                <div class="form-switch">
+                    Don't have an account? <a href="#" id="switchToRegister">Register now</a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="modal" id="registerModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Register</h3>
+                <button class="close-btn" data-modal-id="registerModal" aria-label="Close register modal">&times;</button>
+            </div>
+            <div id="registerMessage" class="message" style="display:none;"></div>
+            <form id="registerForm">
+                <div class="form-group">
+                    <label for="registerName" class="form-label">Full Name</label>
+                    <input type="text" id="registerName" class="form-input" required autocomplete="name">
+                </div>
+                <div class="form-group">
+                    <label for="registerEmail" class="form-label">Email</label>
+                    <input type="email" id="registerEmail" class="form-input" required autocomplete="email">
+                </div>
+                <div class="form-group">
+                    <label for="registerPassword" class="form-label">Password</label>
+                    <input type="password" id="registerPassword" class="form-input" required minlength="6" autocomplete="new-password">
+                </div>
+                <div class="form-group">
+                    <label for="confirmPassword" class="form-label">Confirm Password</label>
+                    <input type="password" id="confirmPassword" class="form-input" required minlength="6" autocomplete="new-password">
+                </div>
+                <button type="submit" class="form-submit">Register</button>
+                <div class="form-switch">
+                    Already have an account? <a href="#" id="switchToLogin">Login now</a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+   <script>
+        // Constantes para los elementos del DOM
+        const loginModal = document.getElementById('loginModal');
+        const registerModal = document.getElementById('registerModal');
+        const closeBtns = document.querySelectorAll('.close-btn');
+        const switchToRegister = document.getElementById('switchToRegister');
+        const switchToLogin = document.getElementById('switchToLogin');
+        const authButtonsContainer = document.getElementById('authButtonsContainer');
+
+        const loginForm = document.getElementById('loginForm');
+        const registerForm = document.getElementById('registerForm');
+
+        const loginMessage = document.getElementById('loginMessage');
+        const registerMessage = document.getElementById('registerMessage');
+
+        // --- Funciones para mostrar mensajes ---
+        function showMessage(element, message, type = 'error') {
+            element.textContent = message;
+            element.className = `message ${type}`;
+            element.style.display = 'block';
+            element.setAttribute('role', 'alert');
+            setTimeout(() => {
+                element.style.display = 'none';
+                element.removeAttribute('role');
+            }, 4000);
+        }
+
+        // --- Funciones para actualizar la UI de autenticación ---
+        function updateAuthUI() {
+            const loggedInUser = JSON.parse(localStorage.getItem('loggedInUser'));
+            authButtonsContainer.innerHTML = ''; 
+
+            if (loggedInUser) {
+                const welcomeMsg = document.createElement('span');
+                welcomeMsg.className = 'welcome-message';
+                welcomeMsg.textContent = `Hi, ${loggedInUser.name}!`;
+                authButtonsContainer.appendChild(welcomeMsg);
+
+                const logoutBtn = document.createElement('button');
+                logoutBtn.className = 'btn btn-outline';
+                logoutBtn.textContent = 'Logout';
+                logoutBtn.id = 'logoutBtn';
+                logoutBtn.addEventListener('click', handleLogout);
+                authButtonsContainer.appendChild(logoutBtn);
+            } else {
+                const loginBtn = document.createElement('button');
+                loginBtn.className = 'btn btn-outline';
+                loginBtn.textContent = 'Login';
+                loginBtn.id = 'loginBtn';
+                loginBtn.addEventListener('click', () => openModal(loginModal));
+                authButtonsContainer.appendChild(loginBtn);
+
+                const registerBtn = document.createElement('button');
+                registerBtn.className = 'btn btn-primary';
+                registerBtn.textContent = 'Register';
+                registerBtn.id = 'registerBtn';
+                registerBtn.addEventListener('click', () => openModal(registerModal));
+                authButtonsContainer.appendChild(registerBtn);
+            }
+        }
+        
+        // --- Funciones para abrir y cerrar modales ---
+        let previouslyFocusedElement;
+        function openModal(modal) {
+            previouslyFocusedElement = document.activeElement;
+            if (modal === loginModal) loginMessage.style.display = 'none';
+            if (modal === registerModal) registerMessage.style.display = 'none';
+            modal.classList.add('active');
+            modal.querySelector('input, button, [href]')?.focus();
+        }
+
+        function closeModal(modal) {
+            modal.classList.remove('active');
+            if (previouslyFocusedElement) {
+                previouslyFocusedElement.focus();
+            }
+        }
+
+        closeBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const modalId = btn.dataset.modalId;
+                if (modalId === 'loginModal') closeModal(loginModal);
+                if (modalId === 'registerModal') closeModal(registerModal);
+            });
+        });
+
+        switchToRegister.addEventListener('click', (e) => {
+            e.preventDefault();
+            closeModal(loginModal);
+            openModal(registerModal);
+        });
+
+        switchToLogin.addEventListener('click', (e) => {
+            e.preventDefault();
+            closeModal(registerModal);
+            openModal(loginModal);
+        });
+
+        window.addEventListener('click', (e) => {
+            if (e.target === loginModal) closeModal(loginModal);
+            if (e.target === registerModal) closeModal(registerModal);
+        });
+        
+        window.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                if (loginModal.classList.contains('active')) closeModal(loginModal);
+                if (registerModal.classList.contains('active')) closeModal(registerModal);
+            }
+        });
+
+        // --- Lógica de Registro ---
+        registerForm.addEventListener('submit', function(event) {
+            event.preventDefault();
+            const name = document.getElementById('registerName').value.trim();
+            const email = document.getElementById('registerEmail').value.trim();
+            const password = document.getElementById('registerPassword').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+
+            if (!name || !email || !password || !confirmPassword) {
+                showMessage(registerMessage, 'All fields are required.');
+                return;
+            }
+            if (password !== confirmPassword) {
+                showMessage(registerMessage, 'Passwords do not match.');
+                return;
+            }
+            if (password.length < 6) {
+                showMessage(registerMessage, 'Password must be at least 6 characters long.');
+                return;
+            }
+
+            let users = JSON.parse(localStorage.getItem('users')) || [];
+            const userExists = users.find(user => user.email === email);
+
+            if (userExists) {
+                showMessage(registerMessage, 'This email is already registered.');
+                return;
+            }
+
+            users.push({ name, email, password }); 
+            localStorage.setItem('users', JSON.stringify(users));
+            
+            showMessage(registerMessage, 'Registration successful! You can now log in.', 'success');
+            registerForm.reset(); 
+            
+            setTimeout(() => { 
+                closeModal(registerModal);
+                openModal(loginModal);
+            }, 1500);
+        });
+
+        // --- Lógica de Login ---
+        loginForm.addEventListener('submit', function(event) {
+            event.preventDefault();
+            const email = document.getElementById('loginEmail').value.trim();
+            const password = document.getElementById('loginPassword').value;
+
+            if (!email || !password) {
+                showMessage(loginMessage, 'Email and password are required.');
+                return;
+            }
+
+            let users = JSON.parse(localStorage.getItem('users')) || [];
+            const user = users.find(u => u.email === email && u.password === password); 
+
+            if (user) {
+                showMessage(loginMessage, 'Login successful!', 'success');
+                localStorage.setItem('loggedInUser', JSON.stringify({ name: user.name, email: user.email }));
+                updateAuthUI(); 
+                loginForm.reset();
+                setTimeout(() => {
+                    closeModal(loginModal);
+                }, 1000);
+            } else {
+                showMessage(loginMessage, 'Invalid email or password.');
+            }
+        });
+
+        // --- Lógica de Logout ---
+        function handleLogout() {
+            localStorage.removeItem('loggedInUser');
+            updateAuthUI(); 
+        }
+        
+        // --- Lógica de Comentarios del Artículo (Ejemplo para Isekai Convention) ---
+        const commentFormIsekaiCon = document.getElementById('commentFormIsekaiCon');
+        if (commentFormIsekaiCon) {
+            commentFormIsekaiCon.addEventListener('submit', function(event) {
+                event.preventDefault();
+                const commenterName = document.getElementById('commenterNameIsekaiCon').value.trim();
+                const commentContent = document.getElementById('commentContentIsekaiCon').value.trim();
+                const commentMessageEl = document.getElementById('commentMessageIsekaiCon');
+
+                if (!commenterName || !commentContent) {
+                    showMessage(commentMessageEl, 'Name and comment are required.');
+                    return;
+                }
+                console.log(`New comment from ${commenterName}: ${commentContent}`);
+                showMessage(commentMessageEl, 'Comment posted (simulation).', 'success');
+                commentFormIsekaiCon.reset();
+            });
+        }
+
+        // --- Inicialización ---
+        document.addEventListener('DOMContentLoaded', updateAuthUI);
+    </script>
+</body>
+</html>

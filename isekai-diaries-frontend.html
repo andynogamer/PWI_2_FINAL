@@ -1,0 +1,779 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Isekai Diaries</title>
+    <style>
+        /* Global Styles */
+        :root {
+            --primary-color: #6B3FA0;
+            --secondary-color: #FF5678;
+            --dark-color: #2D2D2D;
+            --light-color: #F5F5F5;
+            --accent-color: #30BFBF;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--light-color);
+            color: var(--dark-color);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 15px 0;
+        }
+        
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: white;
+            text-decoration: none;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 20px;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+        
+        .auth-buttons {
+            display: flex;
+            align-items: center; /* Para alinear verticalmente el mensaje de bienvenida y el botón de logout */
+            gap: 10px;
+        }
+        
+        .btn {
+            padding: 8px 16px;
+            border-radius: 5px;
+            border: none;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        
+        .btn-primary {
+            background-color: var(--secondary-color);
+            color: white;
+        }
+        
+        .btn-outline {
+            background-color: transparent;
+            color: white;
+            border: 1px solid white;
+        }
+        
+        .btn:hover {
+            opacity: 0.9;
+            transform: translateY(-2px);
+        }
+
+        .welcome-message {
+            color: white;
+            font-weight: 500;
+            margin-right: 10px;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(107, 63, 160, 0.8), rgba(107, 63, 160, 0.9)), url('https://placehold.co/1200x400/7F00FF/FFFFFF?text=Isekai+World') center/cover;
+            color: white;
+            padding: 100px 0;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+        
+        .hero p {
+            font-size: 18px;
+            max-width: 600px;
+            margin: 0 auto 30px;
+        }
+        
+        /* Featured Articles */
+        .featured-articles {
+            padding: 60px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+            color: var(--primary-color);
+            font-size: 32px;
+        }
+        
+        .articles-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+        
+        .article-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+        
+        .article-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .article-image {
+            height: 200px;
+            width: 100%;
+            object-fit: cover;
+        }
+        
+        .article-content {
+            padding: 20px;
+        }
+        
+        .article-tag {
+            background-color: var(--accent-color);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 3px;
+            font-size: 12px;
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+        
+        .article-title {
+            font-size: 20px;
+            margin-bottom: 10px;
+            color: var(--dark-color);
+        }
+        
+        .article-excerpt {
+            color: #666;
+            margin-bottom: 15px;
+            line-height: 1.5;
+        }
+        
+        .article-meta {
+            display: flex;
+            justify-content: space-between;
+            color: #888;
+            font-size: 14px;
+        }
+        
+        /* Login/Register Modal */
+        .modal {
+            display: none; /* Oculto por defecto */
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5); /* Fondo semitransparente */
+            justify-content: center;
+            align-items: center;
+            z-index: 1000; /* Asegura que esté por encima de otros elementos */
+        }
+        
+        .modal.active {
+            display: flex; /* Muestra el modal cuando tiene la clase active */
+        }
+        
+        .modal-content {
+            background-color: white;
+            border-radius: 10px;
+            padding: 30px;
+            width: 100%;
+            max-width: 400px;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
+            position: relative; /* Para posicionar el mensaje de error/éxito */
+        }
+        
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .modal-title {
+            font-size: 24px;
+            color: var(--primary-color);
+        }
+        
+        .close-btn {
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: #888;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+        
+        .form-input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        
+        .form-input:focus {
+            outline: none;
+            border-color: var(--primary-color);
+        }
+        
+        .form-submit {
+            width: 100%;
+            padding: 12px;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .form-submit:hover {
+            background-color: #5a3586;
+        }
+        
+        .form-switch {
+            text-align: center;
+            margin-top: 20px;
+            color: #666;
+        }
+        
+        .form-switch a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .message {
+            padding: 10px;
+            margin-bottom: 15px;
+            border-radius: 5px;
+            text-align: center;
+            font-weight: 500;
+        }
+        .message.success {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        .message.error {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 40px 0;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 40px;
+        }
+        
+        .footer-section h3 {
+            font-size: 20px;
+            margin-bottom: 20px;
+            color: var(--secondary-color);
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            color: #ddd;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: var(--secondary-color);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: background-color 0.3s;
+            color: white; /* Asegura que el texto del icono sea visible */
+            text-decoration: none; /* Quita el subrayado si son enlaces */
+        }
+        
+        .social-icon:hover {
+            background-color: var(--secondary-color);
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .articles-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none; /* Oculta los enlaces de navegación en pantallas pequeñas */
+            }
+            .navbar {
+                flex-direction: column; /* Apila el logo y los botones en pantallas pequeñas */
+                gap: 10px;
+            }
+            .auth-buttons {
+                 margin-top: 10px; /* Espacio entre el logo y los botones */
+            }
+            .hero h1 {
+                font-size: 36px;
+            }
+            .hero p {
+                font-size: 16px;
+            }
+            .articles-grid {
+                grid-template-columns: 1fr; /* Una columna para los artículos */
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr; /* Una columna para el pie de página */
+                text-align: center; /* Centra el contenido del pie de página */
+            }
+            .social-links {
+                justify-content: center; /* Centra los iconos sociales */
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container navbar">
+            <a href="isekai-diaries-frontend.html" class="logo">ISEKAI DIARIES</a>
+            <nav class="nav-links">
+                <a href="isekai-diaries-frontend.html" class="active">Home</a>
+                <a href="isekai-diaries-latest-news.html">Latest News</a>
+                
+            </nav>
+            <div class="auth-buttons" id="authButtonsContainer">
+                </div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1>Welcome to Isekai Diaries</h1>
+            <p>Your reliable source for the latest news, reviews, and content about anime and the captivating world of isekai.</p>
+            <button class="btn btn-primary"><a href="isekai-diaries-latest-news.html" style="color: inherit; text-decoration: none;" >Explore Now</a></button>
+        </div>
+    </section>
+
+    <section class="featured-articles">
+        <div class="container">
+            <h2 class="section-title">Featured Articles</h2>
+            <div class="articles-grid">
+                <div class="article-card">
+                    <a href="isekai-diaries-article.html">
+                        <img src="kudasai_rezero.webp" alt="[Imagen de Re:Zero]" class="article-image" onerror="this.onerror=null;this.src='https://placehold.co/600x400/EFEFEF/AAAAAA?text=Imagen+no+disponible';">
+                    </a>
+                    <div class="article-content">
+                        <span class="article-tag">New Release</span>
+                        <h3 class="article-title"><a href="isekai-diaries-article.html" style="text-decoration: none; color: inherit;">The New Season of 'Re:Zero' Breaks All Records</a></h3>
+                        <p class="article-excerpt">The long-awaited season has surpassed all expectations with its intense storyline and character development.</p>
+                        <div class="article-meta">
+                            <span>By Admin</span>
+                            <span>May 1, 2025</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="article-card">
+                    <a href="isekai-diaries-top10.html">
+                     <img src="isekaiimage.jpeg" alt="[Imagen de Top Isekai]" class="article-image" onerror="this.onerror=null;this.src='https://placehold.co/600x400/EFEFEF/AAAAAA?text=Imagen+no+disponible';">
+                    </a>
+                     <div class="article-content">
+                        <span class="article-tag">Review</span>
+                        <h3 class="article-title"><a href="isekai-diaries-top10.html" style="text-decoration: none; color: inherit;">Top 10 Isekai Anime You Must Watch in 2025</a></h3>
+                        <p class="article-excerpt">From classics to newcomers, we rank the best isekai anime that every fan should add to their watchlist.</p>
+                        <div class="article-meta">
+                            <span>By Fatima</span>
+                            <span>April 28, 2025</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="article-card">
+                    <a href="isekai-diaries-subaru.html">
+                     <img src="Episode_56_Subaru.webp" alt="[Imagen de Subaru Natsuki]" class="article-image" onerror="this.onerror=null;this.src='https://placehold.co/600x400/EFEFEF/AAAAAA?text=Imagen+no+disponible';">
+                    </a>
+                     <div class="article-content">
+                        <span class="article-tag">Character Spotlight</span>
+                        <h3 class="article-title"><a href="isekai-diaries-subaru.html" style="text-decoration: none; color: inherit;">Analyzing the Development of Subaru Natsuki</a></h3>
+                        <p class="article-excerpt">A deep dive into the psychological journey of one of isekai's most complex protagonists.</p>
+                        <div class="article-meta">
+                            <span>By Angel</span>
+                            <span>April 25, 2025</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="modal" id="loginModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Login</h3>
+                <button class="close-btn" data-modal-id="loginModal">&times;</button>
+            </div>
+            <div id="loginMessage" class="message" style="display:none;"></div>
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="loginEmail" class="form-label">Email</label>
+                    <input type="email" id="loginEmail" class="form-input" required>
+                </div>
+                <div class="form-group">
+                    <label for="loginPassword" class="form-label">Password</label>
+                    <input type="password" id="loginPassword" class="form-input" required>
+                </div>
+                <button type="submit" class="form-submit">Login</button>
+                <div class="form-switch">
+                    Don't have an account? <a href="#" id="switchToRegister">Register now</a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="modal" id="registerModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Register</h3>
+                <button class="close-btn" data-modal-id="registerModal">&times;</button>
+            </div>
+            <div id="registerMessage" class="message" style="display:none;"></div>
+            <form id="registerForm">
+                <div class="form-group">
+                    <label for="registerName" class="form-label">Full Name</label>
+                    <input type="text" id="registerName" class="form-input" required>
+                </div>
+                <div class="form-group">
+                    <label for="registerEmail" class="form-label">Email</label>
+                    <input type="email" id="registerEmail" class="form-input" required>
+                </div>
+                <div class="form-group">
+                    <label for="registerPassword" class="form-label">Password</label>
+                    <input type="password" id="registerPassword" class="form-input" required minlength="6">
+                </div>
+                <div class="form-group">
+                    <label for="confirmPassword" class="form-label">Confirm Password</label>
+                    <input type="password" id="confirmPassword" class="form-input" required minlength="6">
+                </div>
+                <button type="submit" class="form-submit">Register</button>
+                <div class="form-switch">
+                    Already have an account? <a href="#" id="switchToLogin">Login now</a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>About Isekai Diaries</h3>
+                    <p>Your reliable source for the latest news, reviews, and content about anime and the captivating world of isekai.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-icon">F</a>
+                        <a href="#" class="social-icon">T</a>
+                        <a href="#" class="social-icon">I</a>
+                        <a href="#" class="social-icon">Y</a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="isekai-diaries-frontend.html">Home</a></li>
+                        <li><a href="isekai-diaries-latest-news.html">Latest News</a></li>
+                        <li><a href="#">Reviews</a></li>
+                        <li><a href="#">Characters</a></li>
+                        <li><a href="#">About</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact Us</h3>
+                    <ul class="footer-links">
+                        <li>Email: info@isekaiDiaries.com</li>
+                        <li>Phone: +123 456 7890</li>
+                        <li>Address: Anime Street 123, Tokyo, Japan</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Isekai Diaries. All rights reserved. Created by Fatima Geraldine Falcon Rostro & Angel Antonio Mata Zamora</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Constantes para los elementos del DOM
+        const loginModal = document.getElementById('loginModal');
+        const registerModal = document.getElementById('registerModal');
+        const closeBtns = document.querySelectorAll('.close-btn');
+        const switchToRegister = document.getElementById('switchToRegister');
+        const switchToLogin = document.getElementById('switchToLogin');
+        const authButtonsContainer = document.getElementById('authButtonsContainer');
+
+        const loginForm = document.getElementById('loginForm');
+        const registerForm = document.getElementById('registerForm');
+
+        const loginMessage = document.getElementById('loginMessage');
+        const registerMessage = document.getElementById('registerMessage');
+
+        // --- Funciones para mostrar mensajes ---
+        function showMessage(element, message, type = 'error') {
+            element.textContent = message;
+            element.className = `message ${type}`; // 'message success' o 'message error'
+            element.style.display = 'block';
+            setTimeout(() => {
+                element.style.display = 'none';
+            }, 3000); // Oculta el mensaje después de 3 segundos
+        }
+
+        // --- Funciones para actualizar la UI de autenticación ---
+        function updateAuthUI() {
+            const loggedInUser = JSON.parse(localStorage.getItem('loggedInUser'));
+            authButtonsContainer.innerHTML = ''; // Limpiar botones existentes
+
+            if (loggedInUser) {
+                // Usuario logueado
+                const welcomeMsg = document.createElement('span');
+                welcomeMsg.className = 'welcome-message';
+                welcomeMsg.textContent = `Welcome, ${loggedInUser.name}!`;
+                authButtonsContainer.appendChild(welcomeMsg);
+
+                const logoutBtn = document.createElement('button');
+                logoutBtn.className = 'btn btn-outline';
+                logoutBtn.textContent = 'Logout';
+                logoutBtn.id = 'logoutBtn';
+                logoutBtn.addEventListener('click', handleLogout);
+                authButtonsContainer.appendChild(logoutBtn);
+            } else {
+                // Usuario no logueado
+                const loginBtn = document.createElement('button');
+                loginBtn.className = 'btn btn-outline';
+                loginBtn.textContent = 'Login';
+                loginBtn.id = 'loginBtn';
+                loginBtn.addEventListener('click', () => openModal(loginModal));
+                authButtonsContainer.appendChild(loginBtn);
+
+                const registerBtn = document.createElement('button');
+                registerBtn.className = 'btn btn-primary';
+                registerBtn.textContent = 'Register';
+                registerBtn.id = 'registerBtn';
+                registerBtn.addEventListener('click', () => openModal(registerModal));
+                authButtonsContainer.appendChild(registerBtn);
+            }
+        }
+        
+        // --- Funciones para abrir y cerrar modales ---
+        function openModal(modal) {
+            // Ocultar mensajes previos al abrir
+            if (modal === loginModal) loginMessage.style.display = 'none';
+            if (modal === registerModal) registerMessage.style.display = 'none';
+            modal.classList.add('active');
+        }
+
+        function closeModal(modal) {
+            modal.classList.remove('active');
+        }
+
+        closeBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const modalId = btn.dataset.modalId;
+                if (modalId === 'loginModal') closeModal(loginModal);
+                if (modalId === 'registerModal') closeModal(registerModal);
+            });
+        });
+
+        switchToRegister.addEventListener('click', (e) => {
+            e.preventDefault();
+            closeModal(loginModal);
+            openModal(registerModal);
+        });
+
+        switchToLogin.addEventListener('click', (e) => {
+            e.preventDefault();
+            closeModal(registerModal);
+            openModal(loginModal);
+        });
+
+        // Cerrar modal al hacer clic afuera
+        window.addEventListener('click', (e) => {
+            if (e.target === loginModal) {
+                closeModal(loginModal);
+            }
+            if (e.target === registerModal) {
+                closeModal(registerModal);
+            }
+        });
+
+        // --- Lógica de Registro ---
+        registerForm.addEventListener('submit', function(event) {
+            event.preventDefault();
+            const name = document.getElementById('registerName').value.trim();
+            const email = document.getElementById('registerEmail').value.trim();
+            const password = document.getElementById('registerPassword').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+
+            if (!name || !email || !password || !confirmPassword) {
+                showMessage(registerMessage, 'All fields are required.', 'error');
+                return;
+            }
+
+            if (password !== confirmPassword) {
+                showMessage(registerMessage, 'Passwords do not match.', 'error');
+                return;
+            }
+            
+            if (password.length < 6) {
+                showMessage(registerMessage, 'Password must be at least 6 characters long.', 'error');
+                return;
+            }
+
+            // Simulación de base de datos con localStorage
+            let users = JSON.parse(localStorage.getItem('users')) || [];
+            const userExists = users.find(user => user.email === email);
+
+            if (userExists) {
+                showMessage(registerMessage, 'This email is already registered.', 'error');
+                return;
+            }
+
+            users.push({ name, email, password }); // En una aplicación real, hashear la contraseña
+            localStorage.setItem('users', JSON.stringify(users));
+            
+            showMessage(registerMessage, 'Registration successful! You can now log in.', 'success');
+            registerForm.reset(); // Limpiar el formulario
+            
+            setTimeout(() => { // Cerrar modal y abrir el de login
+                closeModal(registerModal);
+                openModal(loginModal);
+            }, 1500);
+        });
+
+        // --- Lógica de Login ---
+        loginForm.addEventListener('submit', function(event) {
+            event.preventDefault();
+            const email = document.getElementById('loginEmail').value.trim();
+            const password = document.getElementById('loginPassword').value;
+
+            if (!email || !password) {
+                showMessage(loginMessage, 'Email and password are required.', 'error');
+                return;
+            }
+
+            let users = JSON.parse(localStorage.getItem('users')) || [];
+            const user = users.find(u => u.email === email && u.password === password); // Comparación directa, no segura para producción
+
+            if (user) {
+                showMessage(loginMessage, 'Login successful!', 'success');
+                localStorage.setItem('loggedInUser', JSON.stringify({ name: user.name, email: user.email }));
+                updateAuthUI(); // Actualizar botones del header
+                loginForm.reset();
+                setTimeout(() => {
+                    closeModal(loginModal);
+                }, 1000);
+            } else {
+                showMessage(loginMessage, 'Invalid email or password.', 'error');
+            }
+        });
+
+        // --- Lógica de Logout ---
+        function handleLogout() {
+            localStorage.removeItem('loggedInUser');
+            updateAuthUI(); // Actualizar botones del header
+            // Opcional: Redirigir a la página de inicio o mostrar mensaje
+        }
+
+        // --- Inicialización ---
+        // Actualizar la UI de autenticación al cargar la página
+        document.addEventListener('DOMContentLoaded', updateAuthUI);
+
+    </script>
+</body>
+</html>
